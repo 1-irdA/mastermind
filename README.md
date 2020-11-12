@@ -1,2 +1,2 @@
 # Mastermind
-Python Mastermind
+Mastermind with Python and Pygame
