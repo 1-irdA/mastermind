@@ -2,7 +2,7 @@
 Mastermind with Python and Pygame
 
 ## Demo
-![Alt text](chart.PNG?raw=true "Chart")
+![Alt text](mastermind.PNG?raw=true "Mastermind")
 
 ## Features
 • White number indicate you choosed good(s) color(s).  
