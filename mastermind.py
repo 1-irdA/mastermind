@@ -31,7 +31,7 @@ def create_board():
     board = []
     for i in range(12):
         board.append([])
-        for j in range(4):
+        for j in range(COLS):
             board[i].append('.')
 
     return board
@@ -44,9 +44,9 @@ def draw_board(screen, board):
     for i in range(ROWS):
         for j in range(COLS):
             if board[i][j] == '.':
-                pygame.draw.circle(screen, GREY, (int(j*MARGIN_LR+SIZE/4), (i*MARGIN_TB+60)), RADIUS)
+                pygame.draw.circle(screen, GREY, (int(j*MARGIN_LR+SIZE/COLS), (i*MARGIN_TB+60)), RADIUS)
             else:
-                pygame.draw.circle(screen, COLORS_DICT.get(board[i][j]), (int(j*MARGIN_LR+SIZE/4), (i*MARGIN_TB+60)), RADIUS)
+                pygame.draw.circle(screen, COLORS_DICT.get(board[i][j]), (int(j*MARGIN_LR+SIZE/COLS), (i*MARGIN_TB+60)), RADIUS)
 
 # draw colors on the bottom the screen
 def draw_colors(screen):
@@ -58,7 +58,7 @@ def draw_colors(screen):
         pygame.draw.circle(screen, c, (x, y), RADIUS)
         x += MARGIN_LR
         i += 1
-        if i == 4:
+        if i == COLS:
             y += 50
             x = BEGIN
 
@@ -84,7 +84,7 @@ def compare_color(to_guess, player_colors):
             unique_color.append(col)
             good_colors += 1
 
-    for i in range(0, 4):
+    for i in range(0, COLS):
         if (to_guess[i] == player_colors[i]):
             good_place += 1
 
@@ -93,7 +93,7 @@ def compare_color(to_guess, player_colors):
 # color to find
 def ia_choose_colors():
     colors = COLORS.copy()
-    while len(colors) != 4:
+    while len(colors) != COLS:
         i = random.randint(0, len(colors) - 1)
         colors.pop(i)
     return colors
@@ -131,8 +131,7 @@ def end(screen, to_guess):
 def print_result(screen, result, posx):
     WHITE = (255, 255, 255)
     RED = (255, 0, 0)
-    font = pygame.font.SysFont("monospace",60)           # font style
-    font2 = pygame.font.SysFont("monospace",40)          # font style
+    font2 = pygame.font.SysFont("monospace", 40)          # font style
     for i in range(len(result)):
         s = result[i].split(',')
         if (len(s) == 2):
@@ -150,9 +149,10 @@ def main():
     size = (WIDTH, HEIGHT)                               # window size
 
     pygame.display.set_caption("Mastermind")             # window title
-    icon = pygame.image.load("logo.png")                 # load icon         
+    icon = pygame.image.load("img/logo.png")             # load icon         
     pygame.display.set_icon(icon)                        # put icon
     screen = pygame.display.set_mode(size)               # define screen   
+    font = pygame.font.SysFont("monospace",60)           # font style
 
     board = create_board()
     to_guess = ia_choose_colors()
