@@ -1,6 +1,6 @@
-import random
-import pygame
 import math
+import pygame
+import random
 
 COLS = 4                    # number of cols
 ROWS = 12                   # number of rows
@@ -149,7 +149,7 @@ def main():
     size = (WIDTH, HEIGHT)                               # window size
 
     pygame.display.set_caption("Mastermind")             # window title
-    icon = pygame.image.load("img/logo.png")             # load icon         
+    icon = pygame.image.load("assets/logo.png")             # load icon         
     pygame.display.set_icon(icon)                        # put icon
     screen = pygame.display.set_mode(size)               # define screen   
     font = pygame.font.SysFont("monospace",60)           # font style

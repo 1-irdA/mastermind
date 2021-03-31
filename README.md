@@ -2,7 +2,7 @@
 Mastermind with Python and Pygame
 
 ## Demo
-![Alt text](git-img/mastermind.PNG?raw=true "Mastermind")
+![Alt text](assets/mastermind.PNG?raw=true "Mastermind")
 
 ## Features
 • White number indicate you choosed good(s) color(s).  
